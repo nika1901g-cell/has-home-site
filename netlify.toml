@@ -1,12 +1,3 @@
 [build]
   publish = "."
 
-[[plugins]]
-  package = "@netlify/plugin-gatsby"
-
-# Разрешаем доступ к /admin только через Identity
-[[headers]]
-  for = "/admin/*"
-  [headers.values]
-    X-Frame-Options = "SAMEORIGIN"
-    X-XSS-Protection = "1; mode=block"

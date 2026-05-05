@@ -1,0 +1,47 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+locale: "ru"
+
+collections:
+  - name: "settings"
+    label: "⚙️ Настройки сайта"
+    files:
+      - name: "general"
+        label: "Общие настройки"
+        file: "_data/settings.json"
+        format: json
+        fields:
+          - { label: "Заголовок сайта", name: "site_title", widget: "string", default: "HAS HOME" }
+          - { label: "Слоган (под логотипом)", name: "tagline", widget: "string", default: "Премиум интерьер · 2025" }
+          - { label: "Главный заголовок", name: "hero_title", widget: "string", default: "Искусство жить красиво" }
+          - { label: "Подзаголовок", name: "hero_subtitle", widget: "text", default: "Тщательно отобранные предметы интерьера для тех, кто ценит качество, стиль и атмосферу в каждой детали." }
+          - { label: "Текст кнопки CTA", name: "hero_button", widget: "string", default: "Смотреть каталог" }
+          - label: "Блок акции"
+            name: "promo"
+            widget: "object"
+            fields:
+              - { label: "Заголовок акции", name: "title", widget: "string", default: "Скидка до 30% на новинки" }
+              - { label: "Описание акции", name: "subtitle", widget: "string", default: "Только до конца месяца. Успей обновить интерьер с HAS HOME." }
+              - { label: "Процент скидки", name: "discount", widget: "string", default: "30%" }
+
+  - name: "products"
+    label: "🛋️ Товары"
+    folder: "_products"
+    create: true
+    slug: "{{slug}}"
+    format: json
+    extension: json
+    fields:
+      - { label: "Название товара", name: "title", widget: "string" }
+      - { label: "Цена (₽)", name: "price", widget: "number", value_type: "int" }
+      - { label: "Категория", name: "category", widget: "select", options: ["Мягкая мебель", "Освещение", "Декор", "Текстиль", "Хранение", "Посуда"] }
+      - { label: "Метка (напр. НОВИНКА, ХИТ)", name: "badge", widget: "string", required: false }
+      - { label: "Фото товара", name: "image", widget: "image", required: false }
+      - { label: "Описание", name: "description", widget: "text", required: false }
+      - { label: "Показывать на главной", name: "featured", widget: "boolean", default: false }
+      - { label: "В наличии", name: "in_stock", widget: "boolean", default: true }

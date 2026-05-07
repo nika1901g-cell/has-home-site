@@ -1,0 +1,32 @@
+media:
+  input: images/uploads
+  output: /images/uploads
+
+content:
+  - name: products
+    label: Товары
+    type: collection
+    path: _products
+    format: json
+    fields:
+      - name: title
+        label: Название товара
+        type: string
+      - name: price
+        label: Цена (₽)
+        type: number
+      - name: category
+        label: Категория
+        type: string
+      - name: badge
+        label: Метка (НОВИНКА, ХИТ)
+        type: string
+      - name: image
+        label: Фото товара
+        type: image
+      - name: wb_link
+        label: Ссылка на Wildberries
+        type: string
+      - name: description
+        label: Описание
+        type: string

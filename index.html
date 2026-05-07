@@ -550,7 +550,7 @@
     const grid = document.getElementById('products-grid');
 
     try {
-      const res = await fetch('/.netlify/functions/get-products');
+      const res = await fetch('/api/get-products');
       if (!res.ok) throw new Error('no function');
       const products = await res.json();
 

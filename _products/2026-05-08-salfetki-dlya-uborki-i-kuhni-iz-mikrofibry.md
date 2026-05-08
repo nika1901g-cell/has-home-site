@@ -3,5 +3,6 @@
   "price": 700,
   "category": "Салфетки для уборки",
   "image": "/images/uploads/1 (1).webp",
-  "wb_link": "https://www.wildberries.ru/catalog/399745853/detail.aspx?targetUrl=SN"
+  "wb_link": "https://www.wildberries.ru/catalog/399745853/detail.aspx?targetUrl=SN",
+  "description": "Многоразовые салфетки из микрофибры – удобный и практичный помощник для уборки."
 }

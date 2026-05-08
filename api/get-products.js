@@ -17,6 +17,10 @@ export default function handler(req, res) {
         const content = fs.readFileSync(path.join(productsDir, file), 'utf8');
         const product = JSON.parse(content);
         product._filename = file.replace('.json', '');
+        // Убираем __ которые добавляет Pages CMS
+        if (product.wb_link) {
+          product.wb_link = product.wb_link.replace(/__/g, '').trim();
+        }
         products.push(product);
       } catch(e) {}
     }

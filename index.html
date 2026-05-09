@@ -8,14 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
-    :root {
-      --cream: #f7f3ee;
-      --dark: #1a1612;
-      --accent: #c4a882;
-      --text: #3d3530;
-      --light: #ede8e1;
-      --white: #ffffff;
-    }
+    :root { --cream: #f7f3ee; --dark: #1a1612; --accent: #c4a882; --text: #3d3530; --light: #ede8e1; --white: #ffffff; }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'Montserrat', sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
     nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.2rem 4rem; background: rgba(247,243,238,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(196,168,130,0.2); }
@@ -51,21 +44,8 @@
     #products { background: var(--cream); }
     .products-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; }
     .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 2rem; }
-
-    /* ── КАРТОЧКА ТОВАРА — кликабельная ── */
-    .product-card {
-      background: var(--white);
-      transition: transform 0.3s, box-shadow 0.3s;
-      cursor: pointer;
-      display: block;
-      text-decoration: none;
-      color: inherit;
-    }
-    .product-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-    }
-
+    .product-card { background: var(--white); transition: transform 0.3s, box-shadow 0.3s; cursor: pointer; display: block; text-decoration: none; color: inherit; }
+    .product-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
     .product-img { width: 100%; aspect-ratio: 1; background: var(--light); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
     .product-img img { width: 100%; height: 100%; object-fit: cover; }
     .product-img-placeholder { font-size: 3rem; opacity: 0.3; }
@@ -75,7 +55,6 @@
     .product-cat { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.8rem; }
     .product-price { font-size: 0.9rem; font-weight: 600; color: var(--dark); }
     .wb-btn { display: inline-block; margin-top: 0.8rem; padding: 0.5rem 1.2rem; background: #cb11ab; color: #fff; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border-radius: 2px; }
-
     .promo-section { background: var(--dark); color: var(--white); display: flex; align-items: center; justify-content: space-between; padding: 6rem 4rem; gap: 3rem; }
     .promo-content { max-width: 500px; }
     .promo-label { font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.5rem; }
@@ -104,6 +83,30 @@
     .admin-link { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(196,168,130,0.4); text-decoration: none; transition: color 0.2s; }
     .admin-link:hover { color: var(--accent); }
     .loading-state { text-align: center; padding: 4rem; font-size: 0.8rem; opacity: 0.5; letter-spacing: 0.1em; text-transform: uppercase; }
+
+    /* ── ВСПЛЫВАЮЩЕЕ ОКНО ── */
+    .popup-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 500; display: flex; align-items: center; justify-content: center; animation: fadeIn 0.3s ease; }
+    .popup-overlay.hidden { display: none; }
+    @keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }
+    .popup { background: var(--cream); max-width: 480px; width: 90%; padding: 3rem; position: relative; text-align: center; }
+    .popup-close { position: absolute; top: 1rem; right: 1.2rem; font-size: 1.5rem; cursor: pointer; background: none; border: none; color: var(--text); }
+    .popup-tag { font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
+    .popup-title { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; font-weight: 300; color: var(--dark); margin-bottom: 0.5rem; }
+    .popup-sub { font-size: 0.85rem; color: var(--text); opacity: 0.7; margin-bottom: 2rem; line-height: 1.6; }
+    .popup-code { background: var(--dark); color: var(--accent); padding: 0.8rem 2rem; font-size: 1.2rem; font-weight: 600; letter-spacing: 0.3em; margin-bottom: 1.5rem; display: inline-block; }
+    .popup-btn { display: block; padding: 1rem; background: var(--dark); color: var(--white); font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; border: none; width: 100%; transition: background 0.2s; }
+    .popup-btn:hover { background: var(--accent); }
+
+    /* ── КНОПКИ СВЯЗИ ── */
+    .contact-btns { position: fixed; bottom: 2rem; right: 2rem; z-index: 300; display: flex; flex-direction: column; gap: 0.8rem; }
+    .contact-btn { width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 1.4rem; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: transform 0.2s; }
+    .contact-btn:hover { transform: scale(1.1); }
+    .btn-wa { background: #25D366; }
+    .btn-tg { background: #229ED9; }
+
+    /* ── С ЭТИМ ПОКУПАЮТ ── */
+    #related { background: var(--light); }
+
     @media (max-width: 768px) {
       nav { padding: 1rem 1.5rem; }
       .nav-links { display: none; }
@@ -115,6 +118,24 @@
   </style>
 </head>
 <body>
+
+<!-- ── ВСПЛЫВАЮЩЕЕ ОКНО ── -->
+<div class="popup-overlay" id="popup">
+  <div class="popup">
+    <button class="popup-close" onclick="closePopup()">×</button>
+    <p class="popup-tag">Только для новых гостей</p>
+    <h2 class="popup-title">Скидка 10%</h2>
+    <p class="popup-sub">На первый заказ! Покажи этот код при оформлении на Wildberries</p>
+    <div class="popup-code">HAS10</div>
+    <button class="popup-btn" onclick="closePopup()">Получить скидку →</button>
+  </div>
+</div>
+
+<!-- ── КНОПКИ СВЯЗИ ── -->
+<div class="contact-btns">
+  <a class="contact-btn btn-wa" href="https://wa.me/37493469572" target="_blank" title="WhatsApp">💬</a>
+  <a class="contact-btn btn-tg" href="https://t.me/Wildberris_manager_hasmik" target="_blank" title="Telegram">✈️</a>
+</div>
 
 <nav>
   <a class="logo" href="/">HAS HOME</a>
@@ -169,6 +190,16 @@
   </div>
 </section>
 
+<!-- ── С ЭТИМ ПОКУПАЮТ ── -->
+<section id="related">
+  <div class="products-header">
+    <div><p class="section-label">Рекомендуем</p><h2 class="section-title" style="margin-bottom:0">С этим покупают</h2></div>
+  </div>
+  <div class="products-grid" id="related-grid">
+    <div class="loading-state">Загрузка...</div>
+  </div>
+</section>
+
 <div class="promo-section">
   <div class="promo-content">
     <p class="promo-label">Специальное предложение</p>
@@ -216,28 +247,51 @@
 <script>
   const CAT_ICONS = { 'Мягкая мебель':'🛋️','Освещение':'💡','Декор':'🏺','Текстиль':'🧶','Хранение':'🗄️','Посуда':'🍽️' };
 
+  // ── Всплывающее окно ──
+  function closePopup() { document.getElementById('popup').classList.add('hidden'); }
+  setTimeout(() => {
+    if (!sessionStorage.getItem('popup_shown')) {
+      document.getElementById('popup').classList.remove('hidden');
+      sessionStorage.setItem('popup_shown', '1');
+    }
+  }, 3000);
+
+  // ── Товары ──
+  let allProducts = [];
+
+  function renderProducts(products) {
+    return products.map(p => `
+      <a class="product-card" ${p.wb_link ? `href="${p.wb_link}" target="_blank"` : 'href="#products"'}>
+        <div class="product-img">
+          ${p.image ? `<img src="${p.image}" alt="${p.title}" />` : `<div class="product-img-placeholder">${CAT_ICONS[p.category] || '🏠'}</div>`}
+          ${p.badge ? `<span class="product-badge">${p.badge}</span>` : ''}
+        </div>
+        <div class="product-info">
+          <div class="product-cat">${p.category || ''}</div>
+          <div class="product-name">${p.title}</div>
+          <div class="product-price">от ${Number(p.price).toLocaleString('ru')} ₽</div>
+          ${p.wb_link ? `<span class="wb-btn">Купить на WB →</span>` : ''}
+        </div>
+      </a>
+    `).join('');
+  }
+
   async function loadProducts() {
     const grid = document.getElementById('products-grid');
+    const related = document.getElementById('related-grid');
     try {
       const res = await fetch('/api/get-products');
-      if (!res.ok) throw new Error('no function');
-      const products = await res.json();
-      if (products.length === 0) { grid.innerHTML = '<div class="loading-state">Товары скоро появятся</div>'; return; }
+      if (!res.ok) throw new Error('error');
+      allProducts = await res.json();
+      if (allProducts.length === 0) { grid.innerHTML = '<div class="loading-state">Товары скоро появятся</div>'; return; }
 
-      grid.innerHTML = products.map(p => `
-        <a class="product-card" ${p.wb_link ? `href="${p.wb_link}" target="_blank"` : 'href="#"'}>
-          <div class="product-img">
-            ${p.image ? `<img src="${p.image}" alt="${p.title}" />` : `<div class="product-img-placeholder">${CAT_ICONS[p.category] || '🏠'}</div>`}
-            ${p.badge ? `<span class="product-badge">${p.badge}</span>` : ''}
-          </div>
-          <div class="product-info">
-            <div class="product-cat">${p.category || ''}</div>
-            <div class="product-name">${p.title}</div>
-            <div class="product-price">от ${Number(p.price).toLocaleString('ru')} ₽</div>
-            ${p.wb_link ? `<span class="wb-btn">Купить на WB →</span>` : ''}
-          </div>
-        </a>
-      `).join('');
+      // Главные товары
+      grid.innerHTML = renderProducts(allProducts);
+
+      // С этим покупают — случайные 4 товара
+      const shuffled = [...allProducts].sort(() => Math.random() - 0.5).slice(0, 4);
+      related.innerHTML = renderProducts(shuffled);
+
     } catch(e) {
       grid.innerHTML = '<div class="loading-state">Добавьте товары через админку</div>';
     }
@@ -248,5 +302,4 @@
 </script>
 </body>
 </html>
-
 

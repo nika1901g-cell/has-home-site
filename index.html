@@ -26,6 +26,13 @@
     .search-bar span { font-size: 0.9rem; opacity: 0.5; }
 
     .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 8rem 4rem 4rem; position: relative; overflow: hidden; }
+    .hero-video-wrap { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
+    .hero-video-wrap iframe { position: absolute; top: 50%; left: 50%; width: 200%; height: 200%; transform: translate(-50%, -50%); pointer-events: none; }
+    .hero-overlay { position: absolute; inset: 0; background: rgba(26,22,18,0.55); z-index: 1; }
+    .hero > *:not(.hero-video-wrap):not(.hero-overlay) { position: relative; z-index: 2; }
+    .hero .hero-tag { color: var(--accent); }
+    .hero h1 { color: #fff; }
+    .hero-sub { color: rgba(255,255,255,0.85); }
     .hero-tag { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent); margin-bottom: 2rem; }
     .hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 8vw, 7rem); font-weight: 300; line-height: 1.1; color: var(--dark); max-width: 700px; }
     .hero h1 em { font-style: italic; color: var(--accent); }
@@ -212,6 +219,10 @@
 </div>
 
 <section class="hero">
+  <div class="hero-video-wrap">
+    <iframe src="https://www.youtube.com/embed/Q4nyT0pVKqY?autoplay=1&mute=1&loop=1&playlist=Q4nyT0pVKqY&controls=0&showinfo=0&rel=0&modestbranding=1" frameborder="0" allow="autoplay"></iframe>
+  </div>
+  <div class="hero-overlay"></div>
   <p class="hero-tag" id="hero-tag">Премиум интерьер · 2025</p>
   <h1 id="hero-title">Искусство <em>жить</em> красиво</h1>
   <p class="hero-sub" id="hero-sub">Тщательно отобранные предметы интерьера для тех, кто ценит качество, стиль и атмосферу в каждой детали.</p>
@@ -456,5 +467,4 @@
 </script>
 </body>
 </html>
-
 

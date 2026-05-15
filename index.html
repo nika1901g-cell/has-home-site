@@ -496,13 +496,13 @@
 
 <script>
 // Order counter
-let orders = 1247;
+let animOrders = 1247;
 const el = document.getElementById('orderCount');
 setTimeout(() => {
-  el.textContent = orders;
+  el.textContent = animOrders;
   setInterval(() => {
-    orders += Math.floor(Math.random()*3)+1;
-    el.textContent = orders.toLocaleString('ru');
+    animOrders += Math.floor(Math.random()*3)+1;
+    el.textContent = animOrders.toLocaleString('ru');
   }, 3000);
 }, 3700);
 
@@ -838,5 +838,6 @@ setTimeout(() => { makeBubble(); setInterval(makeBubble, 1400); }, 4500);
 </script>
 </body>
 </html>
+
 
 
